@@ -2651,3 +2651,25 @@ ul li {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+/* banner pengumuman */
+/* Banner styling */
+.announcement-banner {
+  background: linear-gradient(90deg, #0D6EFD, #012970);
+  color: #ffffff;
+  text-align: center;
+  padding: 12px 10px;
+  font-size: 15px;
+  font-weight: 500;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Geser header turun otomatis */
+header.header {
+  margin-top: 56px;
+  /* Tinggi banner, otomatis header tidak menabrak */
+}
