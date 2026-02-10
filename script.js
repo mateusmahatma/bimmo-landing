@@ -12,9 +12,12 @@ closeMenu.addEventListener('click', () => {
 });
 
 // Close mobile menu when a link is clicked
+// Close mobile menu when a link is clicked (except language toggle)
 document.querySelectorAll('.mobile-menu ul li a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
+    link.addEventListener('click', (e) => {
+        if (e.target.id !== 'mobile-lang-toggle') {
+            mobileMenu.classList.remove('active');
+        }
     });
 });
 
@@ -145,25 +148,20 @@ function updateContent() {
     // Update button text
     const desktopBtn = document.getElementById('lang-toggle');
     const mobileBtn = document.getElementById('mobile-lang-toggle');
-    
+
     if (currentLang === 'en') {
-        if(desktopBtn) desktopBtn.innerText = 'ID';
-        if(mobileBtn) mobileBtn.innerText = 'Change Language: ID';
+        if (desktopBtn) desktopBtn.innerText = 'ID';
+        if (mobileBtn) mobileBtn.innerText = 'Change Language: ID';
     } else {
-        if(desktopBtn) desktopBtn.innerText = 'EN';
-        if(mobileBtn) mobileBtn.innerText = 'Change Language: EN';
+        if (desktopBtn) desktopBtn.innerText = 'EN';
+        if (mobileBtn) mobileBtn.innerText = 'Change Language: EN';
     }
 }
 
 function toggleLanguage(e) {
-    if(e) e.preventDefault();
+    if (e) e.preventDefault();
     currentLang = currentLang === 'en' ? 'id' : 'en';
     updateContent();
-    
-    // Close mobile menu if open
-    if (mobileMenu.classList.contains('active') && e.target.id === 'mobile-lang-toggle') {
-        // Optional: keep open or close
-    }
 }
 
 document.getElementById('lang-toggle')?.addEventListener('click', toggleLanguage);
