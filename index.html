@@ -74,14 +74,16 @@
             </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#hero">Beranda</a></li>
-                    <li><a href="#masalah">Mengapa Penting?</a></li>
-                    <li><a href="#solusi">Solusi</a></li>
-                    <li><a href="#fitur">Fitur</a></li>
+                    <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#masalah" data-i18n="nav_why">Why It Matters?</a></li>
+                    <li><a href="#solusi" data-i18n="nav_solution">Solution</a></li>
+                    <li><a href="#fitur" data-i18n="nav_features">Features</a></li>
+                    <li><a href="#" id="lang-toggle" class="lang-btn">ID</a></li>
                 </ul>
             </nav>
             <div class="cta-header">
-                <a href="https://app.bimmo.id" class="btn btn-primary sm" target="_blank">Mulai Sekarang</a>
+                <a href="https://app.bimmo.id" class="btn btn-primary sm" target="_blank" data-i18n="nav_cta">Start
+                    Now</a>
             </div>
             <div class="mobile-menu-icon">
                 <i class="fas fa-bars"></i>
@@ -93,10 +95,11 @@
     <div class="mobile-menu">
         <span class="close-menu"><i class="fas fa-times"></i></span>
         <ul>
-            <li><a href="#hero">Beranda</a></li>
-            <li><a href="#masalah">Mengapa Penting?</a></li>
-            <li><a href="#solusi">Solusi</a></li>
-            <li><a href="#fitur">Fitur</a></li>
+            <li><a href="#hero" data-i18n="nav_home">Home</a></li>
+            <li><a href="#masalah" data-i18n="nav_why">Why It Matters?</a></li>
+            <li><a href="#solusi" data-i18n="nav_solution">Solution</a></li>
+            <li><a href="#fitur" data-i18n="nav_features">Features</a></li>
+            <li><a href="#" id="mobile-lang-toggle" class="lang-btn">Change Language: ID</a></li>
         </ul>
     </div>
 
@@ -104,20 +107,20 @@
     <section id="hero" class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Kuasai Keuanganmu,<br> <span class="highlight">Kuasai Masa Depanmu</span></h1>
-                <p>Jangan biarkan uang mengatur hidup Anda. Mulailah perjalanan menuju kebebasan finansial dengan
-                    pemahaman dan alat yang tepat.</p>
+                <h1 data-i18n="hero_title">Master Your Finance,<br> <span class="highlight">Master Your Future</span>
+                </h1>
+                <p data-i18n="hero_subtitle">Don't let money control your life. Start your journey to financial freedom
+                    with the right understanding and tools.</p>
                 <div class="hero-buttons">
-                    <a href="#solusi" class="btn btn-primary">Pelajari Lebih Lanjut</a>
-                    <a href="#fitur" class="btn btn-secondary">Lihat Fitur</a>
+                    <a href="#solusi" class="btn btn-primary" data-i18n="hero_btn_learn">Learn More</a>
+                    <a href="#fitur" class="btn btn-secondary" data-i18n="hero_btn_features">See Features</a>
                 </div>
-                <p class="trust-text"><i class="fas fa-lock"></i> Aplikasi keuangan dengan sistem keamanan yang dapat
-                    dipercaya.</p>
+                <p class="trust-text"><i class="fas fa-lock"></i> <span data-i18n="hero_trust">Financial app with
+                        trusted security system.</span></p>
             </div>
             <div class="hero-image">
                 <!-- Placeholder for a finance illustration -->
-                <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                    alt="Financial Freedom Illustration" class="floating-img">
+                <img src="assets/img/hero-illustration.jpg" alt="Financial Freedom Illustration" class="floating-img">
             </div>
         </div>
     </section>
@@ -126,30 +129,32 @@
     <section id="masalah" class="section-padding bg-light">
         <div class="container">
             <div class="section-header text-center">
-                <h2>Mengapa Banyak Orang Gagal?</h2>
-                <p>Tanpa perencanaan keuangan yang baik, risiko finansial mengintai di setiap sudut.</p>
+                <h2 data-i18n="problem_title">Why Do Many People Fail?</h2>
+                <p data-i18n="problem_subtitle">Without good financial planning, financial risks lurk around every
+                    corner.</p>
             </div>
             <div class="grid-3">
                 <div class="card problem-card">
                     <div class="icon-box danger">
                         <i class="fas fa-exclamation-triangle"></i>
                     </div>
-                    <h3>Utang Menumpuk</h3>
-                    <p>Pengeluaran tanpa kendali seringkali berujung pada jebakan utang yang sulit dihentikan.</p>
+                    <h3 data-i18n="problem_1_title">Piling Debt</h3>
+                    <p data-i18n="problem_1_desc">Uncontrolled spending often leads to a debt trap that is difficult to
+                        stop.</p>
                 </div>
                 <div class="card problem-card">
                     <div class="icon-box warning">
                         <i class="fas fa-search-dollar"></i>
                     </div>
-                    <h3>Tidak Ada Tabungan</h3>
-                    <p>Ketidaksiapan menghadapi keadaan darurat karena tidak adanya dana cadangan.</p>
+                    <h3 data-i18n="problem_2_title">No Savings</h3>
+                    <p data-i18n="problem_2_desc">Unprepared for emergencies due to lack of emergency funds.</p>
                 </div>
                 <div class="card problem-card">
                     <div class="icon-box dark">
                         <i class="fas fa-chart-line-down"></i>
                     </div>
-                    <h3>Investasi Bodong</h3>
-                    <p>Tergiur keuntungan instan tanpa pemahaman risiko yang memadai.</p>
+                    <h3 data-i18n="problem_3_title">Bad Investments</h3>
+                    <p data-i18n="problem_3_desc">Tempted by instant profits without adequate risk understanding.</p>
                 </div>
             </div>
         </div>
@@ -160,8 +165,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-6">
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                        alt="Financial Solution" class="rounded-img">
+                    <img src="assets/img/solution-image.jpg" alt="Financial Solution" class="rounded-img">
                 </div>
                 <div class="col-6">
                     <div class="section-header text-left">
@@ -256,9 +260,9 @@
             <div class="footer-col">
                 <h4>Hubungi Kami</h4>
                 <ul>
-                    <li><i class="fas fa-envelope"></i> support@bimmo.id</li>
-                    <li><i class="fas fa-phone"></i> +62 812 3456 7890</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+                    <li><i class="fas fa-envelope"></i> budgetbimmo@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +62 813 5042 3898</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Semarang, Indonesia</li>
                 </ul>
             </div>
             <div class="footer-col">
