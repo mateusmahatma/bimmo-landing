@@ -194,6 +194,23 @@ header {
     width: 100%;
 }
 
+.lang-btn {
+    font-weight: 700 !important;
+    border: 2px solid var(--primary-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white) !important;
+}
+
+.lang-btn:hover::after {
+    width: 0 !important;
+}
+
 .mobile-menu-icon {
     display: none;
     font-size: 1.5rem;
