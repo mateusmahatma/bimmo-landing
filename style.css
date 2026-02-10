@@ -273,6 +273,20 @@ header {
     max-width: 90%;
 }
 
+.hero-text .trust-text {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.9;
+}
+
+.hero-text .trust-text i {
+    color: var(--primary-color);
+}
+
 .hero-image img {
     border-radius: 20px;
     box-shadow: var(--shadow-lg);
