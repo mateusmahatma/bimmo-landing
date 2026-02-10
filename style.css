@@ -116,7 +116,7 @@ img {
 
 .btn-secondary:hover {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--white);
 }
 
 .btn.sm {
