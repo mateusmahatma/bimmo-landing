@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bimmo Help Center</title>
+    <meta
+      name="description"
+      content="Find answers and complete guides for using Bimmo financial app."
+    />
+
+    <link rel="icon" href="assets/img/bimmo_favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/img/bimmo.png" alt="Bimmo Logo" />
+          </a>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li>
+              <a href="index.html#masalah" data-i18n="nav_why"
+                >Why It Matters?</a
+              >
+            </li>
+            <li>
+              <a href="index.html#solusi" data-i18n="nav_solution">Solution</a>
+            </li>
+            <li>
+              <a href="index.html#fitur" data-i18n="nav_features">Features</a>
+            </li>
+            <li>
+              <a href="panduan.html" class="active" data-i18n="nav_guide"
+                >Guide</a
+              >
+            </li>
+            <li><a href="#" id="lang-toggle" class="lang-btn">ID</a></li>
+          </ul>
+        </nav>
+        <div class="cta-header">
+          <a
+            href="https://app.bimmo.id"
+            class="btn btn-primary sm"
+            target="_blank"
+            data-i18n="nav_cta"
+            >Start Now</a
+          >
+        </div>
+        <div class="mobile-menu-icon">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+      <span class="close-menu"><i class="fas fa-times"></i></span>
+      <ul>
+        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+        <li>
+          <a href="index.html#masalah" data-i18n="nav_why">Why It Matters?</a>
+        </li>
+        <li>
+          <a href="index.html#solusi" data-i18n="nav_solution">Solution</a>
+        </li>
+        <li>
+          <a href="index.html#fitur" data-i18n="nav_features">Features</a>
+        </li>
+        <li><a href="panduan.html" data-i18n="nav_guide">Panduan</a></li>
+        <li>
+          <a href="#" id="mobile-lang-toggle" class="lang-btn"
+            >Change Language: ID</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Guide Hero Section -->
+    <section class="guide-hero section-padding bg-light text-center">
+      <div class="container">
+        <h1 class="guide-title" data-i18n="guide_title">Bimmo Help Center</h1>
+        <p class="guide-subtitle" data-i18n="guide_subtitle">
+          Find answers to your questions about Bimmo
+        </p>
+
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            class="guide-search-input"
+            placeholder="Search guides..."
+            data-i18n-placeholder="guide_search_placeholder"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Guide Content Section -->
+    <section class="guide-content section-padding">
+      <div class="container">
+        <!-- Search Results -->
+        <div id="search-results" class="guide-section" style="display: none">
+          <h2 class="section-title">
+            <i class="fas fa-search"></i>
+            <span data-i18n="search_results_title">Search Results</span>
+          </h2>
+          <ul class="article-list" id="search-results-list">
+            <!-- Results will be injected here -->
+          </ul>
+        </div>
+
+        <div class="guide-grid" id="guide-main-content">
+          <!-- Popular Articles -->
+          <div class="guide-section popular-section" id="popular-section">
+            <h2 class="section-title">
+              <i class="fas fa-thumbtack"></i>
+              <span data-i18n="guide_pop_title">Popular Articles</span>
+            </h2>
+            <ul class="article-list">
+              <li>
+                <a href="#" id="link-register"
+                  ><i class="far fa-file-alt"></i>
+                  <span data-i18n="article_register">How to Register</span></a
+                >
+              </li>
+              <li>
+                <a href="#" id="link-login"
+                  ><i class="far fa-file-alt"></i>
+                  <span data-i18n="article_login">How to Login</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="far fa-file-alt"></i>
+                  <span data-i18n="pop_article_1"
+                    >How to reset Bimmo account password</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="far fa-file-alt"></i>
+                  <span data-i18n="pop_article_2"
+                    >How to export financial reports to Excel/PDF</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="far fa-file-alt"></i>
+                  <span data-i18n="pop_article_3"
+                    >Guide to connecting e-wallets (OVO, GoPay)</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="far fa-file-alt"></i>
+                  <span data-i18n="pop_article_4"
+                    >Tips for effective monthly budgeting</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="far fa-file-alt"></i>
+                  <span data-i18n="pop_article_5"
+                    >How to invite partners for business collaboration</span
+                  ></a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- FAQ -->
+          <div class="guide-section faq-section">
+            <h2 class="section-title">
+              <i class="fas fa-question-circle"></i>
+              <span data-i18n="guide_faq_title">Short FAQ</span>
+            </h2>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary data-i18n="faq_q1">Is Bimmo free to use?</summary>
+                <p data-i18n="faq_a1">
+                  Yes, Bimmo has a free plan with basic features sufficient for
+                  daily personal financial recording. We also offer a Premium
+                  plan for more complete features.
+                </p>
+              </details>
+              <details class="faq-item">
+                <summary data-i18n="faq_q2">
+                  How is my data security at Bimmo?
+                </summary>
+                <p data-i18n="faq_a2">
+                  Data security is our top priority. Bimmo uses bank-level
+                  encryption to protect all your transaction data and personal
+                  information.
+                </p>
+              </details>
+              <details class="faq-item">
+                <summary data-i18n="faq_q3">
+                  Can I access Bimmo from Mobile and Laptop?
+                </summary>
+                <p data-i18n="faq_a3">
+                  Of course! Bimmo is cloud-based, so you can access your
+                  account from any device (Android, iOS, or Web Browser) in
+                  real-time.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Modal -->
+    <div class="modal-overlay" id="register-modal">
+      <div class="modal-content">
+        <span class="close-modal close-reg">&times;</span>
+        <h2 data-i18n="modal_reg_title">How to Register</h2>
+        <ol class="modal-steps">
+          <li data-i18n="modal_reg_step1">
+            Access the registration page via
+            <a href="https://app.bimmo.id/daftar" target="_blank"
+              >https://app.bimmo.id/daftar</a
+            >.
+          </li>
+          <li data-i18n="modal_reg_step2">
+            Fill in all fields completely and correctly.
+          </li>
+          <li data-i18n="modal_reg_step3">
+            Check the box "I agree and accept the terms and conditions".
+          </li>
+          <li data-i18n="modal_reg_step4">
+            Click the "Create an account" button to complete the registration
+            process.
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="login-modal">
+      <div class="modal-content">
+        <span class="close-modal close-login">&times;</span>
+        <h2 data-i18n="modal_login_title">How to Login</h2>
+        <ol class="modal-steps">
+          <li data-i18n="modal_login_step1">
+            Access the login page via
+            <a href="https://app.bimmo.id" target="_blank"
+              >https://app.bimmo.id</a
+            >.
+          </li>
+          <li data-i18n="modal_login_step2">
+            Enter your username and password.
+          </li>
+          <li data-i18n="modal_login_step3">Click the "Login" button.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-col">
+          <h3>Bimmo</h3>
+          <p>
+            Your trusted partner in your financial journey towards a brighter
+            future.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> budgetbimmo@gmail.com</li>
+            <li><i class="fas fa-phone"></i> +62 813 5042 3898</li>
+            <li><i class="fas fa-map-marker-alt"></i> Semarang, Indonesia</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        <p>&copy; 2026 Bimmo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
