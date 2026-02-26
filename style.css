@@ -575,9 +575,10 @@ header {
 /* Features Section */
 .grid-4 {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
+
 
 .feature-box {
     text-align: left;
@@ -665,6 +666,14 @@ header {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
+
+.pricing-note {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+}
+
 
 /* Footer */
 footer {
