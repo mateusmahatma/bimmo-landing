@@ -138,7 +138,10 @@ const translations = {
         faq_q2: "How is my data security at Bimmo?",
         faq_a2: "Data security is our top priority. Bimmo uses bank-level encryption to protect all your transaction data and personal information.",
         faq_q3: "Can I access Bimmo from Mobile and Laptop?",
-        faq_a3: "Of course! Bimmo is cloud-based, so you can access your account from any device (Android, iOS, or Web Browser) in real-time."
+        faq_a3: "Of course! Bimmo is cloud-based, so you can access your account from any device (Android, iOS, or Web Browser) in real-time.",
+        devtools_title: "Access Restricted",
+        devtools_desc: "For data security, Web Developer tools are disabled on this page.",
+        devtools_reload: "Reload Page"
     },
     id: {
         nav_home: "Beranda",
@@ -244,11 +247,14 @@ const translations = {
         faq_q2: "Bagaimana data keamanan saya di Bimmo?",
         faq_a2: "Keamanan data adalah prioritas utama kami. Bimmo menggunakan enkripsi tingkat bank untuk melindungi semua data transaksi dan informasi pribadi Anda.",
         faq_q3: "Apakah saya bisa mengakses Bimmo dari HP dan Laptop?",
-        faq_a3: "Tentu saja! Bimmo berbasis cloud, sehingga Anda bisa mengakses akun Anda dari perangkat apa saja (Android, iOS, atau Web Browser) secara real-time."
+        faq_a3: "Tentu saja! Bimmo berbasis cloud, sehingga Anda bisa mengakses akun Anda dari perangkat apa saja (Android, iOS, atau Web Browser) secara real-time.",
+        devtools_title: "Akses Dibatasi",
+        devtools_desc: "Demi keamanan data, fitur Web Developer tools dinonaktifkan di halaman ini.",
+        devtools_reload: "Muat Ulang Halaman"
     }
 };
 
-let currentLang = 'en';
+let currentLang = localStorage.getItem('bimmo_lang') || 'en';
 
 function updateContent() {
     const elements = document.querySelectorAll('[data-i18n]');
@@ -284,6 +290,7 @@ function updateContent() {
 function toggleLanguage(e) {
     if (e) e.preventDefault();
     currentLang = currentLang === 'en' ? 'id' : 'en';
+    localStorage.setItem('bimmo_lang', currentLang);
     updateContent();
 }
 
@@ -405,5 +412,102 @@ document.addEventListener('click', (e) => {
 
 
 
+// DevTools Detection logic (Hardened Version)
+function initDevToolsDetection() {
+    const overlay = document.getElementById('devtools-overlay');
+    let devtoolsOpen = false;
+
+    const blockAccess = () => {
+        if (!devtoolsOpen) {
+            devtoolsOpen = true;
+            window.location.href = 'restricted.html';
+        }
+    };
+
+    // 1. Block Context Menu & Shortcuts (Windows & Mac)
+    window.addEventListener('contextmenu', e => e.preventDefault());
+    window.addEventListener('keydown', e => {
+        const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+        const isCmdOrCtrl = isMac ? e.metaKey : e.ctrlKey;
+        const isOptionOrAlt = e.altKey;
+
+        // F12 (Windows)
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            blockAccess();
+        }
+
+        // Developer Tools: Ctrl+Shift+I/J/C (Win) or Cmd+Opt+I/J/C (Mac)
+        if (isCmdOrCtrl && (isMac ? isOptionOrAlt : e.shiftKey) && [73, 74, 67].includes(e.keyCode)) {
+            e.preventDefault();
+            blockAccess();
+        }
+
+        // View Source: Ctrl+U (Win) or Cmd+Opt+U (Mac)
+        if (isCmdOrCtrl && (isMac ? isOptionOrAlt : false || e.keyCode === 85)) {
+            // Special case for Mac Cmd+Opt+U vs Win Ctrl+U
+            if (isMac && isOptionOrAlt && e.keyCode === 85) {
+                e.preventDefault();
+                blockAccess();
+            } else if (!isMac && e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                blockAccess();
+            }
+        }
+
+        // Save Page: Ctrl+S (Win) or Cmd+S (Mac)
+        if (isCmdOrCtrl && e.keyCode === 83) {
+            e.preventDefault();
+            blockAccess();
+        }
+    });
+
+    // 2. The "Ultimate" Detector (Combination of multiple tricks)
+    const detect = () => {
+        // Dimension check
+        const threshold = 160;
+        if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+            blockAccess();
+        }
+
+        // Timing / Debugger check
+        const start = performance.now();
+        debugger;
+        if (performance.now() - start > 100) {
+            blockAccess();
+        }
+    };
+
+    // 3. Getter Trick (Specifically for Chrome/Firefox/Safari opening via menu)
+    // We create a dummy object that triggers a getter when the console tries to "preview" it
+    const checkViaConsole = () => {
+        const dummy = /./;
+        dummy.toString = function () {
+            blockAccess();
+            return "blink";
+        };
+        console.log(dummy);
+
+        // Another trick using Error stack
+        const err = new Error();
+        Object.defineProperty(err, 'stack', {
+            get: function () {
+                blockAccess();
+                return "";
+            }
+        });
+        console.log(err);
+    };
+
+    // Run checks continuously
+    setInterval(detect, 500);
+    setInterval(checkViaConsole, 1000);
+    window.addEventListener('resize', detect);
+
+    // Initial check
+    detect();
+}
+
 // Initialize
 updateContent();
+initDevToolsDetection();

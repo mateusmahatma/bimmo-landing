@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akses Dibatasi - Bimmo</title>
+    <link rel="icon" href="assets/img/bimmo_favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #012970 0%, #001a4d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: white;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .restricted-container {
+            text-align: center;
+            max-width: 500px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .icon-circle {
+            width: 100px;
+            height: 100px;
+            background: #ff0302;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 35px rgba(255, 3, 2, 0.4);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-white {
+            background: white;
+            color: #012970;
+            padding: 16px 48px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: #f8fafc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="restricted-container">
+        <div class="icon-circle">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+        <h1 data-i18n="devtools_title">Akses Dibatasi</h1>
+        <p data-i18n="devtools_desc">Fitur Web Developer tools dinonaktifkan di halaman ini demi menjaga integritas dan
+            keamanan data finansial pengguna Bimmo.</p>
+        <a href="index.html" class="btn-white" data-i18n="devtools_reload">Kembali ke Beranda</a>
+    </div>
+
+    <script>
+        // Simple language detection/fallback for this static page
+        const lang = localStorage.getItem('bimmo_lang') || 'id';
+        const translations = {
+            en: {
+                title: "Access Restricted",
+                desc: "Web Developer tools are disabled on this page to maintain the integrity and security of Bimmo user financial data.",
+                btn: "Return to Home"
+            },
+            id: {
+                title: "Akses Dibatasi",
+                desc: "Fitur Web Developer tools dinonaktifkan di halaman ini demi menjaga integritas dan keamanan data finansial pengguna Bimmo.",
+                btn: "Kembali ke Beranda"
+            }
+        };
+
+        const t = translations[lang] || translations.id;
+        document.querySelector('h1').innerText = t.title;
+        document.querySelector('p').innerText = t.desc;
+        document.querySelector('.btn-white').innerText = t.btn;
+    </script>
+</body>
+
+</html>
