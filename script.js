@@ -436,6 +436,15 @@ document.addEventListener('click', (e) => {
 
 // DevTools Detection logic (Hardened Version)
 function initDevToolsDetection() {
+    // Robust Mobile Detection: Bypass for mobile devices to avoid false positives 
+    // (e.g., from browser bars, UI scaling, or lack of traditional DevTools)
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        (window.innerWidth < 1024 && ('ontouchstart' in window || navigator.maxTouchPoints > 0));
+
+    if (isMobile) {
+        return;
+    }
+
     const overlay = document.getElementById('devtools-overlay');
     let devtoolsOpen = false;
 
@@ -486,11 +495,6 @@ function initDevToolsDetection() {
 
     // 2. The "Ultimate" Detector (Combination of multiple tricks)
     const detect = () => {
-        // Skip for mobile devices to avoid false positives (e.g., from browser bars or UI scaling)
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            return;
-        }
-
         // Dimension check
         const threshold = 160;
         if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
@@ -508,11 +512,6 @@ function initDevToolsDetection() {
     // 3. Getter Trick (Specifically for Chrome/Firefox/Safari opening via menu)
     // We create a dummy object that triggers a getter when the console tries to "preview" it
     const checkViaConsole = () => {
-        // Skip for mobile devices
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            return;
-        }
-
         const dummy = /./;
         dummy.toString = function () {
             blockAccess();
