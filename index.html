@@ -100,6 +100,7 @@
             <li><a href="#masalah" data-i18n="nav_why">Why It Matters?</a></li>
             <li><a href="#solusi" data-i18n="nav_solution">Solution</a></li>
             <li><a href="#fitur" data-i18n="nav_features">Features</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
             <li><a href="panduan.html" data-i18n="nav_guide">Guide</a></li>
             <li><a href="#" id="lang-toggle" class="lang-btn">ID</a></li>
           </ul>
@@ -127,6 +128,7 @@
         <li><a href="#masalah" data-i18n="nav_why">Why It Matters?</a></li>
         <li><a href="#solusi" data-i18n="nav_solution">Solution</a></li>
         <li><a href="#fitur" data-i18n="nav_features">Features</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         <li><a href="panduan.html" data-i18n="nav_guide">Guide</a></li>
         <li>
           <a href="#" id="mobile-lang-toggle" class="lang-btn"
@@ -449,6 +451,94 @@
       </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding contact-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 data-i18n="contact_title">Get in Touch</h2>
+          <p data-i18n="contact_subtitle">
+            Have questions or need assistance? Our team is here to help you.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info-cards">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4 data-i18n="contact_email_title">Email Us</h4>
+                <p>budgetbimmo@gmail.com</p>
+                <a
+                  href="mailto:budgetbimmo@gmail.com"
+                  class="contact-link"
+                  data-i18n="contact_email_link"
+                  >Send a message</a
+                >
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4 data-i18n="contact_phone_title">Call Us</h4>
+                <p>081350423898</p>
+                <a
+                  href="tel:081350423898"
+                  class="contact-link"
+                  data-i18n="contact_phone_link"
+                  >Talk to us</a
+                >
+              </div>
+            </div>
+            <!-- <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4 data-i18n="contact_location_title">Our Office</h4>
+              <p>Banjarmasin, South Kalimantan, Indonesia</p>
+            </div>
+          </div> -->
+          </div>
+          <div class="contact-form-wrapper">
+            <form class="contact-form">
+              <div class="form-group">
+                <label for="name" data-i18n="form_name">Name</label>
+                <input type="text" id="name" placeholder="Your Name" required />
+              </div>
+              <div class="form-group">
+                <label for="email" data-i18n="form_email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="message" data-i18n="form_message">Message</label>
+                <textarea
+                  id="message"
+                  rows="4"
+                  placeholder="How can we help?"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary w-100"
+                data-i18n="form_submit"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer>
       <div class="container footer-content">
@@ -469,11 +559,12 @@
           </ul>
         </div> -->
         <div class="footer-col">
-          <h4 data-i18n="footer_contact">Contact Us</h4>
-          <ul>
-            <li><i class="fas fa-envelope"></i> budgetbimmo@gmail.com</li>
-            <li><i class="fas fa-phone"></i> 081350423898</li>
-          </ul>
+          <h4 data-i18n="footer_follow">Follow Us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
         <!-- <div class="footer-col">
           <h4 data-i18n="footer_follow">Follow Us</h4>
