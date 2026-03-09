@@ -495,10 +495,12 @@ function initDevToolsDetection() {
 
     // 2. The "Ultimate" Detector (Combination of multiple tricks)
     const detect = () => {
-        // Dimension check
-        const threshold = 160;
-        if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-            blockAccess();
+        // Dimension check (Increased threshold for macOS sidebars)
+        const threshold = 250;
+        if (window.outerWidth > 0 && window.outerHeight > 0) {
+            if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                blockAccess();
+            }
         }
 
         // Timing / Debugger check
@@ -536,7 +538,8 @@ function initDevToolsDetection() {
     window.addEventListener('resize', detect);
 
     // Initial check
-    detect();
+    // Initial check (delayed for stability on macOS/heavy load)
+    setTimeout(detect, 1000);
 }
 
 // Contact Form Submission
