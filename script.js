@@ -567,7 +567,29 @@ function initContactForm() {
     }
 }
 
+// Intersection Observer for Scroll Animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Once visible, no need to observe anymore
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    animatedElements.forEach(el => observer.observe(el));
+}
+
 // Initialize
 updateContent();
 initDevToolsDetection();
 initContactForm();
+initScrollAnimations();
