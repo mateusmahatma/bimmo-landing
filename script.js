@@ -469,14 +469,13 @@ function initDevToolsDetection() {
         console.log(err);
     };
 
-    // Run checks continuously
-    setInterval(detect, 500);
-    setInterval(checkViaConsole, 1000);
-    window.addEventListener('resize', detect);
-
-    // Initial check
-    // Initial check (delayed for stability on macOS/heavy load)
-    setTimeout(detect, 1000);
+    // Run checks continuously (DISABLED: Causing false positives in Edge/Safari sidebars)
+    // setInterval(detect, 500);
+    // setInterval(checkViaConsole, 1000);
+    // window.addEventListener('resize', detect);
+ 
+    // Initial check (DISABLED)
+    // setTimeout(detect, 1000);
 }
 
 // Contact Form Submission
