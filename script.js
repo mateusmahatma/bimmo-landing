@@ -473,7 +473,7 @@ function initDevToolsDetection() {
     // setInterval(detect, 500);
     // setInterval(checkViaConsole, 1000);
     // window.addEventListener('resize', detect);
- 
+
     // Initial check (DISABLED)
     // setTimeout(detect, 1000);
 }
@@ -574,7 +574,7 @@ function initCheckout() {
 }
 */
 
-// Initialize
+console.log("Bimmo Landing v1.0.1 - DevTools detection disabled.");
 updateContent();
 initDevToolsDetection();
 initContactForm();
