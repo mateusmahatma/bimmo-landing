@@ -1,32 +1,29 @@
-// Mobile Menu Toggle
-const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
-const mobileMenu = document.querySelector('.mobile-menu');
-const closeMenu = document.querySelector('.close-menu');
+function initBootstrapNavbarAutoClose() {
+    const navbarCollapse = document.getElementById('mainNavbar');
+    if (!navbarCollapse || typeof bootstrap === 'undefined') return;
 
-mobileMenuIcon.addEventListener('click', () => {
-    mobileMenu.classList.add('active');
-});
+    const collapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse, { toggle: false });
 
-closeMenu.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-});
-
-// Close mobile menu when a link is clicked
-// Close mobile menu when a link is clicked (except language toggle)
-document.querySelectorAll('.mobile-menu ul li a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        if (e.target.id !== 'mobile-lang-toggle') {
-            mobileMenu.classList.remove('active');
-        }
+    navbarCollapse.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navbarCollapse.classList.contains('show')) {
+                collapse.hide();
+            }
+        });
     });
-});
+}
 
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({
             behavior: 'smooth'
         });
     });
@@ -329,46 +326,6 @@ function toggleLanguage(e) {
 document.getElementById('lang-toggle')?.addEventListener('click', toggleLanguage);
 document.getElementById('mobile-lang-toggle')?.addEventListener('click', toggleLanguage);
 
-// Event Delegation for Modals (Handling dynamic search results)
-document.addEventListener('click', (e) => {
-    // Register Modal
-    const regTrigger = e.target.closest('#link-register') || e.target.closest('.trigger-register');
-    if (regTrigger) {
-        e.preventDefault();
-        const modal = document.getElementById('register-modal');
-        if (modal) {
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-        }
-    }
-
-    // Login Modal
-    const loginTrigger = e.target.closest('#link-login') || e.target.closest('.trigger-login');
-    if (loginTrigger) {
-        e.preventDefault();
-        const modal = document.getElementById('login-modal');
-        if (modal) {
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-        }
-    }
-
-    // Close Buttons
-    if (e.target.closest('.close-modal')) {
-        const modal = e.target.closest('.modal-overlay');
-        if (modal) {
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-    }
-
-    // Close when clicking outside
-    if (e.target.classList.contains('modal-overlay')) {
-        e.target.classList.remove('active');
-        setTimeout(() => e.target.style.display = 'none', 300);
-    }
-});
-
 
 
 // DevTools Detection logic (Hardened Version)
@@ -576,6 +533,7 @@ function initCheckout() {
 
 console.log("Bimmo Landing v1.0.1 - DevTools detection disabled.");
 updateContent();
+initBootstrapNavbarAutoClose();
 initDevToolsDetection();
 initContactForm();
 initScrollAnimations();

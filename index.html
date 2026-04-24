@@ -21,6 +21,8 @@
   <meta property="og:image" content="https://bimmo.id/assets/img/bimmo.png" />
 
   <link rel="icon" href="assets/img/bimmo_favicon.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
@@ -30,67 +32,79 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container navbar">
-      <div class="logo">
-        <a href="#">
-          <img src="assets/img/bimmo.png" alt="Bimmo Logo" />
-        </a>
-      </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#hero" data-i18n="nav_home">Home</a></li>
-          <li><a href="#pillars" data-i18n="nav_features">Features</a></li>
-          <li><a href="#keamanan" data-i18n="nav_security">Security</a></li>
-          <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
-          <li><a href="#social-proof" data-i18n="nav_testimonials">Reviews</a></li>
-          <li><a href="#" id="lang-toggle" class="btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">ID</a></li>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top bg-white bimmo-navbar">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#hero" aria-label="Bimmo Home">
+        <img src="assets/img/bimmo.png" alt="Bimmo Logo" style="height: 32px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#hero" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pillars" data-i18n="nav_features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#keamanan" data-i18n="nav_security">Security</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#social-proof" data-i18n="nav_testimonials">Reviews</a></li>
+          <li class="nav-item">
+            <button id="lang-toggle" type="button" class="btn btn-outline-secondary btn-sm">ID</button>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <button type="button" class="btn btn-primary trigger-register" data-i18n="nav_cta" data-bs-toggle="modal"
+              data-bs-target="#registerModal">Get Started</button>
+          </li>
         </ul>
-      </nav>
-      <div class="cta-header">
-        <div class="mobile-menu-icon"><i class="fas fa-bars"></i></div>
-        <a href="#" class="btn btn-primary trigger-register" data-i18n="nav_cta">Get Started</a>
       </div>
     </div>
-  </header>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <div class="close-menu"><i class="fas fa-times"></i></div>
-    <ul>
-      <li><a href="#hero" data-i18n="nav_home">Home</a></li>
-      <li><a href="#pillars" data-i18n="nav_features">Features</a></li>
-      <li><a href="#keamanan" data-i18n="nav_security">Security</a></li>
-      <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
-      <li><a href="#social-proof" data-i18n="nav_testimonials">Reviews</a></li>
-      <li><a href="#" id="mobile-lang-toggle">Change Language: ID</a></li>
-      <li><a href="#" class="btn btn-primary trigger-register" style="margin-top: 20px;">Get Started</a></li>
-    </ul>
-  </div>
+  </nav>
 
   <!-- Hero Section -->
   <section id="hero" class="hero">
-    <div class="container hero-content hero-with-mockup animate-on-scroll">
-      <div class="hero-text">
-        <h1 data-i18n="hero_title">
-          Professional Finance Tracking for <span class="highlight">Everyone</span>
-        </h1>
-        <p data-i18n="hero_subtitle">
-          Bimmo provides advanced tools and deep insights to help you master your cash flow and achieve long-term financial stability.
-        </p>
-        <div class="hero-buttons">
-          <a href="#" class="btn btn-primary trigger-register">Try It for Free</a>
-          <a href="#pillars" class="btn btn-secondary">See Features</a>
+    <div class="container">
+      <div class="row align-items-center g-5 animate-on-scroll">
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="display-5 fw-bold mb-3" data-i18n="hero_title">
+            Professional Finance Tracking for <span class="highlight">Everyone</span>
+          </h1>
+          <p class="lead text-muted mb-4" data-i18n="hero_subtitle">
+            Bimmo provides advanced tools and deep insights to help you master your cash flow and achieve long-term
+            financial stability.
+          </p>
+          <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+            <button type="button" class="btn btn-primary btn-lg trigger-register" data-bs-toggle="modal"
+              data-bs-target="#registerModal">Try It for Free</button>
+            <a href="#pillars" class="btn btn-outline-secondary btn-lg">See Features</a>
+          </div>
+          <div class="d-flex align-items-center gap-2 mt-4 small text-muted justify-content-center justify-content-lg-start">
+            <i class="fas fa-shield-alt text-success"></i>
+            <span data-i18n="hero_trust">Financial app with trusted security system.</span>
+          </div>
         </div>
-        <div class="hero-trust" style="margin-top: 24px; font-size: 0.85rem; color: var(--text-muted);">
-           <i class="fas fa-shield-alt" style="color: #10b981; margin-right: 8px;"></i>
-           <span data-i18n="hero_trust">Financial app with trusted security system.</span>
+        <div class="col-lg-6">
+        <div class="col-lg-6">
+        <div class="hero-video-wrapper">
+        <video
+          src="assets/video/video-1.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+
+        <div class="burn-rate-annotation">
+          <svg class="arrow-svg" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10 5 Q 10 50 85 50" stroke="#6C63FF" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+            <polygon points="85,44 95,50 85,56" fill="#6C63FF"/>
+          </svg>
+          <div class="burn-rate-label">
+            <span class="burn-rate-title">Burn Rate</span>
+            <span class="burn-rate-desc">Seberapa cepat kamu menghabiskan uang setiap bulannya</span>
+          </div>
         </div>
       </div>
-      <div class="hero-mockup-wrapper">
-        <img src="assets/img/Net Worth Detail - Bimmo.png" alt="Dashboard Mockup" class="mockup-main" />
-        <img src="assets/img/Budget Performance - Bimmo.png" alt="Budgeting Mockup" class="mockup-secondary" />
       </div>
     </div>
   </section>
@@ -102,21 +116,45 @@
         <h2 data-i18n="problem_title">Why Do Many People Fail?</h2>
         <p data-i18n="problem_subtitle">Without good financial planning, financial risks lurk around every corner.</p>
       </div>
-      <div class="pillars-grid">
-        <div class="pillar-card" style="text-align: left;">
-          <div class="pillar-icon" style="margin-left: 0;"><i class="fas fa-exclamation-triangle"></i></div>
-          <h3 data-i18n="problem_1_title">Piling Debt</h3>
-          <p data-i18n="problem_1_desc">Uncontrolled spending often leads to a debt trap that is difficult to stop.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 56px; height: 56px;">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <h3 class="h5" data-i18n="problem_1_title">Piling Debt</h3>
+              <p class="text-muted mb-0" data-i18n="problem_1_desc">Uncontrolled spending often leads to a debt trap that
+                is difficult to stop.</p>
+            </div>
+          </div>
         </div>
-        <div class="pillar-card" style="text-align: left;">
-          <div class="pillar-icon" style="margin-left: 0;"><i class="fas fa-heart-crack"></i></div>
-          <h3 data-i18n="problem_2_title">No Savings</h3>
-          <p data-i18n="problem_2_desc">Unprepared for emergencies due to lack of emergency funds.</p>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 56px; height: 56px;">
+                <i class="fas fa-heart-crack"></i>
+              </div>
+              <h3 class="h5" data-i18n="problem_2_title">No Savings</h3>
+              <p class="text-muted mb-0" data-i18n="problem_2_desc">Unprepared for emergencies due to lack of emergency
+                funds.</p>
+            </div>
+          </div>
         </div>
-        <div class="pillar-card" style="text-align: left;">
-          <div class="pillar-icon" style="margin-left: 0;"><i class="fas fa-chart-line-down"></i></div>
-          <h3 data-i18n="problem_3_title">Bad Investments</h3>
-          <p data-i18n="problem_3_desc">Tempted by instant profits without adequate risk understanding.</p>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 56px; height: 56px;">
+                <i class="fas fa-chart-line-down"></i>
+              </div>
+              <h3 class="h5" data-i18n="problem_3_title">Bad Investments</h3>
+              <p class="text-muted mb-0" data-i18n="problem_3_desc">Tempted by instant profits without adequate risk
+                understanding.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -129,21 +167,42 @@
         <h2 data-i18n="solution_title">Smart Solutions for Healthy Finances</h2>
         <p data-i18n="solution_subtitle">Managing finances doesn't mean torturing yourself, but creating peace of mind.</p>
       </div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-icon"><i class="fas fa-check-circle"></i></div>
-          <h4 data-i18n="solution_1_title">Realistic Budgeting</h4>
-          <p data-i18n="solution_1_desc">Create a budget that fits your lifestyle and goals.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 64px; height: 64px;">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <h4 class="h5" data-i18n="solution_1_title">Realistic Budgeting</h4>
+              <p class="text-muted mb-0" data-i18n="solution_1_desc">Create a budget that fits your lifestyle and goals.</p>
+            </div>
+          </div>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-icon"><i class="fas fa-sync"></i></div>
-          <h4 data-i18n="solution_2_title">Automatic Recording</h4>
-          <p data-i18n="solution_2_desc">Monitor every income and expense without hassle.</p>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 64px; height: 64px;">
+                <i class="fas fa-sync"></i>
+              </div>
+              <h4 class="h5" data-i18n="solution_2_title">Automatic Recording</h4>
+              <p class="text-muted mb-0" data-i18n="solution_2_desc">Monitor every income and expense without hassle.</p>
+            </div>
+          </div>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-icon"><i class="fas fa-microchip"></i></div>
-          <h4 data-i18n="solution_3_title">Financial Analysis</h4>
-          <p data-i18n="solution_3_desc">Get deep insights into your financial health.</p>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 64px; height: 64px;">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <h4 class="h5" data-i18n="solution_3_title">Financial Analysis</h4>
+              <p class="text-muted mb-0" data-i18n="solution_3_desc">Get deep insights into your financial health.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -156,48 +215,94 @@
         <h2 data-i18n="features_title">Bimmo Premium Features</h2>
         <p data-i18n="features_subtitle">Complete tools for managing personal and business finances.</p>
       </div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-icon"><i class="fas fa-wallet"></i></div>
-          <h3 data-i18n="feature_budget_title">Budgeting</h3>
-          <p data-i18n="feature_budget_desc">Create and manage your budgets easily.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 64px; height: 64px;">
+                <i class="fas fa-wallet"></i>
+              </div>
+              <h3 class="h5" data-i18n="feature_budget_title">Budgeting</h3>
+              <p class="text-muted mb-0" data-i18n="feature_budget_desc">Create and manage your budgets easily.</p>
+            </div>
+          </div>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-icon"><i class="fas fa-shield-heart"></i></div>
-          <h3 data-i18n="feature_emergency_title">Emergency Fund</h3>
-          <p data-i18n="feature_emergency_desc">Build your safety net systematically.</p>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 64px; height: 64px;">
+                <i class="fas fa-shield-heart"></i>
+              </div>
+              <h3 class="h5" data-i18n="feature_emergency_title">Emergency Fund</h3>
+              <p class="text-muted mb-0" data-i18n="feature_emergency_desc">Build your safety net systematically.</p>
+            </div>
+          </div>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-icon"><i class="fas fa-exchange-alt"></i></div>
-          <h3 data-i18n="feature_cashflow_title">Cash Flow</h3>
-          <p data-i18n="feature_cashflow_desc">Monitor your money in and out.</p>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-body-secondary text-primary mb-3"
+                style="width: 64px; height: 64px;">
+                <i class="fas fa-exchange-alt"></i>
+              </div>
+              <h3 class="h5" data-i18n="feature_cashflow_title">Cash Flow</h3>
+              <p class="text-muted mb-0" data-i18n="feature_cashflow_desc">Monitor your money in and out.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Trust Center -->
-  <section id="keamanan" class="bg-dark animate-on-scroll">
+  <section id="keamanan" class="bimmo-bg-dark animate-on-scroll">
     <div class="container">
       <div class="section-header text-center">
-        <h2 style="color: white;" data-i18n="secure_title">How Bimmo Protects Your Data</h2>
-        <p style="color: rgba(255,255,255,0.7);" data-i18n="secure_subtitle">Your privacy is our priority. We use End-to-End Encryption (E2EE) to ensure your financial data remains your own.</p>
+        <h2 class="text-white" data-i18n="secure_title">How Bimmo Protects Your Data</h2>
+        <p class="text-white-50" data-i18n="secure_subtitle">Your privacy is our priority. We use End-to-End Encryption
+          (E2EE) to ensure your financial data remains your own.</p>
       </div>
-      <div class="secure-flow-container">
-        <div class="secure-step">
-          <div class="secure-icon-wrapper"><i class="fas fa-folder-open"></i></div>
-          <h4 style="color: white;" data-i18n="step_1_title">Store Your Assets</h4>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;" data-i18n="step_1_desc">You safely record your assets, transactions, or goods into the Bimmo app.</p>
+      <div class="row g-4 mt-4">
+        <div class="col-md-4">
+          <div class="card h-100 bg-transparent border border-white border-opacity-25">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white bg-opacity-10 text-white mb-3"
+                style="width: 80px; height: 80px; font-size: 1.5rem;">
+                <i class="fas fa-folder-open"></i>
+              </div>
+              <h4 class="h5 text-white" data-i18n="step_1_title">Store Your Assets</h4>
+              <p class="text-white-50 mb-0" data-i18n="step_1_desc">You safely record your assets, transactions, or goods
+                into the Bimmo app.</p>
+            </div>
+          </div>
         </div>
-        <div class="secure-step">
-          <div class="secure-icon-wrapper"><i class="fas fa-truck-loading"></i></div>
-          <h4 style="color: white;" data-i18n="step_2_title">Bimmo as a Courier</h4>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;" data-i18n="step_2_desc">Bimmo acts as a secure courier, encrypting your data locally before it ever leaves your device.</p>
+        <div class="col-md-4">
+          <div class="card h-100 bg-transparent border border-white border-opacity-25">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white bg-opacity-10 text-white mb-3"
+                style="width: 80px; height: 80px; font-size: 1.5rem;">
+                <i class="fas fa-truck-loading"></i>
+              </div>
+              <h4 class="h5 text-white" data-i18n="step_2_title">Bimmo as a Courier</h4>
+              <p class="text-white-50 mb-0" data-i18n="step_2_desc">Bimmo acts as a secure courier, encrypting your data
+                locally before it ever leaves your device.</p>
+            </div>
+          </div>
         </div>
-        <div class="secure-step">
-          <div class="secure-icon-wrapper"><i class="fas fa-vault"></i></div>
-          <h4 style="color: white;" data-i18n="step_3_title">Secure in the Vault</h4>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;" data-i18n="step_3_desc">Your data is stored in a digital brankas (vault) that only you can access with your private key.</p>
+        <div class="col-md-4">
+          <div class="card h-100 bg-transparent border border-white border-opacity-25">
+            <div class="card-body text-center">
+              <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white bg-opacity-10 text-white mb-3"
+                style="width: 80px; height: 80px; font-size: 1.5rem;">
+                <i class="fas fa-vault"></i>
+              </div>
+              <h4 class="h5 text-white" data-i18n="step_3_title">Secure in the Vault</h4>
+              <p class="text-white-50 mb-0" data-i18n="step_3_desc">Your data is stored in a digital brankas (vault) that
+                only you can access with your private key.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -210,28 +315,48 @@
         <h2 data-i18n="pricing_title">Our Pricing Plans</h2>
         <p data-i18n="pricing_subtitle">Choose the plan that suits your financial needs.</p>
       </div>
-      <div class="pillars-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto;">
-        <div class="pillar-card" style="text-align: left;">
-          <h3 data-i18n="plan_free_title">Free</h3>
-          <h2 style="margin: 16px 0;">Rp 0</h2>
-          <p data-i18n="plan_free_desc">Perfect for individuals starting their financial journey.</p>
-          <ul style="margin: 24px 0; list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
-            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: #10b981; margin-right: 8px;"></i> <span data-i18n="feature_basic_budget">Basic Budgeting</span></li>
-            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: #10b981; margin-right: 8px;"></i> <span data-i18n="feature_daily_record">Daily Recording</span></li>
-          </ul>
-          <a href="#" class="btn btn-secondary trigger-register" style="width: 100%; justify-content: center;" data-i18n="btn_get_started">Get Started</a>
+      <div class="row g-4 justify-content-center" style="max-width: 900px; margin: 0 auto;">
+        <div class="col-md-6 col-lg-5">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body d-flex flex-column">
+              <h3 class="h5" data-i18n="plan_free_title">Free</h3>
+              <div class="display-6 fw-bold my-2">Rp 0</div>
+              <p class="text-muted" data-i18n="plan_free_desc">Perfect for individuals starting their financial journey.</p>
+              <ul class="list-unstyled small text-muted my-3">
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><span
+                    data-i18n="feature_basic_budget">Basic Budgeting</span></li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><span
+                    data-i18n="feature_daily_record">Daily Recording</span></li>
+              </ul>
+              <div class="mt-auto">
+                <button type="button" class="btn btn-outline-secondary w-100 trigger-register"
+                  data-i18n="btn_get_started" data-bs-toggle="modal" data-bs-target="#registerModal">Get Started</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="pillar-card" style="text-align: left; border: 2px solid var(--accent-color); position: relative;">
-          <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;" data-i18n="badge_popular">Most Popular</div>
-          <h3 data-i18n="plan_premium_title">Premium</h3>
-          <h2 style="margin: 16px 0;" data-i18n="plan_premium_price">Free Trial</h2>
-          <p data-i18n="plan_premium_desc">Full features for power users and business owners.</p>
-          <ul style="margin: 24px 0; list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
-            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: #10b981; margin-right: 8px;"></i> <span data-i18n="feature_all_free">Everything in Free</span></li>
-            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: #10b981; margin-right: 8px;"></i> <span data-i18n="feature_advanced_analytics">Advanced Analytics</span></li>
-            <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: #10b981; margin-right: 8px;"></i> <span data-i18n="feature_priority_support">Priority Support</span></li>
-          </ul>
-          <a href="#" class="btn btn-primary trigger-register" style="width: 100%; justify-content: center;" data-i18n="btn_go_premium">Try for Free</a>
+        <div class="col-md-6 col-lg-5">
+          <div class="card h-100 shadow-sm border-primary border-2">
+            <div class="card-body d-flex flex-column position-relative">
+              <span class="badge text-bg-primary position-absolute top-0 start-50 translate-middle"
+                data-i18n="badge_popular">Most Popular</span>
+              <h3 class="h5" data-i18n="plan_premium_title">Premium</h3>
+              <div class="display-6 fw-bold my-2" data-i18n="plan_premium_price">Free Trial</div>
+              <p class="text-muted" data-i18n="plan_premium_desc">Full features for power users and business owners.</p>
+              <ul class="list-unstyled small text-muted my-3">
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><span data-i18n="feature_all_free">Everything
+                    in Free</span></li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><span
+                    data-i18n="feature_advanced_analytics">Advanced Analytics</span></li>
+                <li class="mb-2"><i class="fas fa-check text-success me-2"></i><span
+                    data-i18n="feature_priority_support">Priority Support</span></li>
+              </ul>
+              <div class="mt-auto">
+                <button type="button" class="btn btn-primary w-100 trigger-register" data-i18n="btn_go_premium"
+                  data-bs-toggle="modal" data-bs-target="#registerModal">Try for Free</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -244,36 +369,60 @@
         <h2>Used by Professionals</h2>
         <p>Join thousands of users who have transformed their relationship with money.</p>
       </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="user-info">
-            <div class="user-avatar"><i class="fas fa-user"></i></div>
-            <div>
-              <h4 style="margin: 0;">Aditama R.</h4>
-              <small>Financial Consultant</small>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="d-flex align-items-center justify-content-center rounded-circle bg-body-secondary text-secondary"
+                  style="width: 44px; height: 44px;">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <div class="fw-bold">Aditama R.</div>
+                  <small class="text-muted">Financial Consultant</small>
+                </div>
+              </div>
+              <p class="mb-0 fst-italic">"Bimmo has completely streamlined how I track my personal cash flow. The interface
+                is exceptionally clean and efficient."</p>
             </div>
           </div>
-          <p class="testimonial-text">"Bimmo has completely streamlined how I track my personal cash flow. The interface is exceptionally clean and efficient."</p>
         </div>
-        <div class="testimonial-card">
-          <div class="user-info">
-            <div class="user-avatar"><i class="fas fa-user"></i></div>
-            <div>
-              <h4 style="margin: 0;">Sarah Kirana</h4>
-              <small>Project Manager</small>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="d-flex align-items-center justify-content-center rounded-circle bg-body-secondary text-secondary"
+                  style="width: 44px; height: 44px;">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <div class="fw-bold">Sarah Kirana</div>
+                  <small class="text-muted">Project Manager</small>
+                </div>
+              </div>
+              <p class="mb-0 fst-italic">"The budgeting alerts are a life-saver. I finally have a clear view of my spending
+                without any technical headaches."</p>
             </div>
           </div>
-          <p class="testimonial-text">"The budgeting alerts are a life-saver. I finally have a clear view of my spending without any technical headaches."</p>
         </div>
-        <div class="testimonial-card">
-          <div class="user-info">
-            <div class="user-avatar"><i class="fas fa-user"></i></div>
-            <div>
-              <h4 style="margin: 0;">Budi Santoso</h4>
-              <small>Business Owner</small>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="d-flex align-items-center justify-content-center rounded-circle bg-body-secondary text-secondary"
+                  style="width: 44px; height: 44px;">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <div class="fw-bold">Budi Santoso</div>
+                  <small class="text-muted">Business Owner</small>
+                </div>
+              </div>
+              <p class="mb-0 fst-italic">"As a business owner, I need clarity. Bimmo gives me exactly that with its
+                professional reporting features."</p>
             </div>
           </div>
-          <p class="testimonial-text">"As a business owner, I need clarity. Bimmo gives me exactly that with its professional reporting features."</p>
         </div>
       </div>
     </div>
@@ -285,24 +434,33 @@
       <div class="section-header">
         <h2 style="font-size: 2rem;">Frequently Asked Questions</h2>
       </div>
-      <div class="faq-list" style="display: flex; flex-direction: column; gap: 16px;">
-        <details class="pillar-card" style="padding: 20px; text-align: left; cursor: pointer;">
-          <summary style="font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-            <span data-i18n="faq_q3">Can I access Bimmo from Mobile and Laptop?</span>
-            <i class="fas fa-chevron-down"></i>
-          </summary>
-          <p style="margin-top: 16px; color: var(--text-muted);" data-i18n="faq_a3">Of course! Bimmo is cloud-based, so you can access your account from any device in real-time.</p>
-        </details>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="faqHeadingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
+              <span data-i18n="faq_q3">Can I access Bimmo from Mobile and Laptop?</span>
+            </button>
+          </h3>
+          <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne"
+            data-bs-parent="#faqAccordion">
+            <div class="accordion-body text-muted" data-i18n="faq_a3">
+              Of course! Bimmo is cloud-based, so you can access your account from any device in real-time.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="bg-dark" style="text-align: center; border-radius: 0;">
+  <section class="bimmo-bg-dark" style="text-align: center; border-radius: 0;">
     <div class="container">
-      <h2 style="color: white; margin-bottom: 24px;" data-i18n="cta_title">Ready to Take Control?</h2>
-      <p style="color: rgba(255,255,255,0.7); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;" data-i18n="cta_subtitle">Join thousands of other smart users today.</p>
-      <a href="#" class="btn btn-primary trigger-register" style="padding: 16px 40px; font-size: 1.1rem;" data-i18n="cta_btn">Sign Up Free Now</a>
+      <h2 class="text-white mb-3" data-i18n="cta_title">Ready to Take Control?</h2>
+      <p class="text-white-50 mb-4 mx-auto" style="max-width: 600px;" data-i18n="cta_subtitle">Join thousands of other smart
+        users today.</p>
+      <button type="button" class="btn btn-primary btn-lg trigger-register" data-i18n="cta_btn" data-bs-toggle="modal"
+        data-bs-target="#registerModal">Sign Up Free Now</button>
     </div>
   </section>
 
@@ -313,13 +471,16 @@
         <h2 data-i18n="contact_title">Get in Touch</h2>
         <p data-i18n="contact_subtitle">Have questions or need assistance? Our team is here to help you.</p>
       </div>
-      <div style="max-width: 600px; margin: 0 auto;">
-         <form class="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
-            <input type="text" id="name" data-i18n-placeholder="form_name" placeholder="Name" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-alt);" />
-            <input type="email" id="email" data-i18n-placeholder="form_email" placeholder="Email" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-alt);" />
-            <textarea id="message" rows="4" data-i18n-placeholder="form_message" placeholder="Message" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-alt);"></textarea>
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" data-i18n="form_submit">Send Message</button>
-         </form>
+      <div class="mx-auto" style="max-width: 600px;">
+        <form class="contact-form vstack gap-3">
+          <input type="text" id="name" class="form-control" data-i18n-placeholder="form_name" placeholder="Name"
+            required />
+          <input type="email" id="email" class="form-control" data-i18n-placeholder="form_email" placeholder="Email"
+            required />
+          <textarea id="message" rows="4" class="form-control" data-i18n-placeholder="form_message" placeholder="Message"
+            required></textarea>
+          <button type="submit" class="btn btn-primary w-100" data-i18n="form_submit">Send Message</button>
+        </form>
       </div>
     </div>
   </section>
@@ -327,17 +488,18 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-col">
-          <h3 style="margin-bottom: 12px;">Bimmo</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="footer_desc">Your trusted partner in your financial journey towards a brighter future.</p>
+      <div class="row align-items-center gy-3">
+        <div class="col-md-8">
+          <h3 class="h5 mb-2">Bimmo</h3>
+          <p class="text-muted small mb-0" data-i18n="footer_desc">Your trusted partner in your financial journey towards a
+            brighter future.</p>
         </div>
-        <div class="footer-col" style="text-align: right;">
-          <p style="font-size: 0.85rem; color: var(--text-muted);">&copy; 2026 Bimmo Team. All rights reserved.</p>
-          <div style="margin-top: 12px; display: flex; gap: 16px; justify-content: flex-end;">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
+        <div class="col-md-4 text-md-end">
+          <p class="text-muted small mb-2">&copy; 2026 Bimmo Team. All rights reserved.</p>
+          <div class="d-flex gap-3 justify-content-md-end">
+            <a class="text-secondary" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a class="text-secondary" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a class="text-secondary" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
           </div>
         </div>
       </div>
@@ -345,14 +507,20 @@
   </footer>
 
   <!-- Modals -->
-  <div id="register-modal" class="modal-overlay">
-    <div class="modal-content">
-      <div class="close-modal"><i class="fas fa-times"></i></div>
-      <h2 data-i18n="nav_cta">Get Started</h2>
-      <p style="text-align: center; color: var(--text-muted); margin-bottom: 24px;">Choose your registration method:</p>
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-         <a href="https://app.bimmo.id/daftar" class="btn btn-primary" style="justify-content: center;">Register via Web App</a>
-         <!-- <a href="https://play.google.com/store" class="btn btn-secondary" style="justify-content: center;"><i class="fab fa-google-play" style="margin-right: 8px;"></i> Android App</a> -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="registerModalLabel" data-i18n="nav_cta">Get Started</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted mb-3">Choose your registration method:</p>
+          <div class="d-grid gap-2">
+            <a href="https://app.bimmo.id/daftar" class="btn btn-primary">Register via Web App</a>
+            <!-- <a href="https://play.google.com/store" class="btn btn-outline-secondary"><i class="fab fa-google-play me-2"></i>Android App</a> -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -367,6 +535,9 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
   <script src="script.js?v=1.0.3"></script>
 </body>
 
