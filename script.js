@@ -13,6 +13,16 @@ function initBootstrapNavbarAutoClose() {
     });
 }
 
+function updateLayoutVars() {
+    const navbar = document.querySelector('.navbar.fixed-top');
+    const navHeight = navbar ? Math.ceil(navbar.getBoundingClientRect().height) : 0;
+    if (navHeight > 0) {
+        document.documentElement.style.setProperty('--nav-h', `${navHeight}px`);
+    }
+
+    document.documentElement.style.setProperty('--app-vh', `${window.innerHeight}px`);
+}
+
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -36,13 +46,26 @@ const translations = {
         nav_why: "Why It Matters?",
         nav_solution: "Solution",
         nav_features: "Features",
+        nav_security: "Security",
         nav_pricing: "Pricing",
-        nav_cta: "Free",
-        hero_title: "Master Your Finance,<br> <span class=\"highlight\">Master Your Future</span>",
-        hero_subtitle: "Don't let money control your life. Start your journey to financial freedom with the right understanding and tools.",
-        hero_btn_learn: "Learn More",
-        hero_btn_features: "See Features",
-        hero_trust: "Financial app with trusted security system.",
+        nav_testimonials: "Reviews",
+        nav_cta: "Get Started",
+        hero_title: "Clarity for your money,<br> <span class=\"highlight\">calm for your life</span>",
+        hero_subtitle: "Bimmo helps you track income and spending, understand cash flow, and stay consistent—without confusing finance jargon.",
+        hero_btn_primary: "Start Free",
+        hero_btn_secondary: "See How It Works (2 min)",
+        hero_trust: "Privacy-first with trusted security.",
+        trust_title: "Trusted for daily money management",
+        trust_subtitle: "Security, privacy, and comfort come first.",
+        trust_media_title: "As seen in",
+        trust_security_title: "Security",
+        trust_security_1: "Data encryption",
+        trust_security_2: "Account protection",
+        trust_security_3: "Privacy-first",
+        trust_users_title: "Users",
+        trust_users_value: "Used by 10,000+ users",
+        trust_users_desc: "Start small, stay consistent every day.",
+        trust_note: "Replace the “Media” placeholders with your real logos/certifications.",
         problem_title: "Why Do Many People Fail?",
         problem_subtitle: "Without good financial planning, financial risks lurk around every corner.",
         problem_1_title: "Piling Debt",
@@ -60,13 +83,16 @@ const translations = {
         solution_3_title: "Financial Analysis",
         solution_3_desc: "Get deep insights into your financial health.",
         features_title: "Bimmo Premium Features",
-        features_subtitle: "Complete tools for managing personal and business finances.",
-        feature_budget_title: "Budgeting",
-        feature_budget_desc: "Create and manage your budgets easily.",
-        feature_emergency_title: "Emergency Fund",
-        feature_emergency_desc: "Build your safety net systematically.",
-        feature_cashflow_title: "Cash Flow",
-        feature_cashflow_desc: "Monitor your money in and out.",
+        features_subtitle: "Benefits designed for real-life money decisions.",
+        features_visual_note: "Visual note: money products are number-driven—use clean chart/mockup illustrations (not stock photos of people holding phones).",
+        feature_budget_title: "Clear cash flow",
+        feature_budget_desc: "See what's coming in, going out, and what's left—at a glance.",
+        feature_emergency_title: "Fast daily logging",
+        feature_emergency_desc: "Add transactions in seconds, whenever you need.",
+        feature_cashflow_title: "Goals that move",
+        feature_cashflow_desc: "Track progress for emergency funds, savings, and investments.",
+        feature_gentle_title: "Gentle reminders",
+        feature_gentle_desc: "Helpful nudges when spending drifts—without guilt.",
         feature_liability_title: "Control Liability",
         feature_liability_desc: "Manage and reduce your debts effectively.",
         feature_visual_title: "Visual Reports",
@@ -81,6 +107,17 @@ const translations = {
         feature_goals_desc: "Set, track, and achieve your financial dreams with smart planning.",
         feature_migration_title: "Data Migration",
         feature_migration_desc: "Easily migrate your financial data from your previous app or start your new record journey.",
+        testimonials_title: "Stories from people like you",
+        testimonials_subtitle: "Young professionals and young families building calmer money habits.",
+        testi_1_name: "Aditama R.",
+        testi_1_role: "Young Professional",
+        testi_1_text: "\"I used to wonder where my money went every month. With Bimmo, I see my spending pattern and consistently set aside money for investing. It feels calmer.\"",
+        testi_2_name: "Sarah Kirana",
+        testi_2_role: "Young Family",
+        testi_2_text: "\"We needed something simple—no spreadsheets. Bimmo makes budgeting clear, and we’re more aligned on priorities.\"",
+        testi_3_name: "Budi Santoso",
+        testi_3_role: "Newly Married",
+        testi_3_text: "\"The UI is clean and the language is easy. The reminders help without stressing us out. Saving for an emergency fund finally feels realistic.\"",
         cta_title: "Ready to Take Control?",
         cta_subtitle: "Join thousands of other smart users today.",
         cta_btn: "Sign Up Free Now",
@@ -91,15 +128,7 @@ const translations = {
         footer_careers: "Careers",
         footer_blog: "Blog",
         footer_privacy: "Privacy Policy",
-        footer_contact: "Contact Us",
         footer_follow: "Follow Us",
-        contact_title: "Get in Touch",
-        contact_subtitle: "Have questions or need assistance? Our team is here to help you.",
-        contact_email_title: "Email Us",
-        contact_email_link: "Send a message",
-        contact_phone_title: "Call Us",
-        contact_phone_link: "Talk to us",
-        contact_location_title: "Our Office",
         form_name: "Name",
         form_email: "Email",
         form_message: "Message",
@@ -161,13 +190,26 @@ const translations = {
         nav_why: "Mengapa Penting?",
         nav_solution: "Solusi",
         nav_features: "Fitur",
+        nav_security: "Keamanan",
         nav_pricing: "Harga",
-        nav_cta: "Gratis",
-        hero_title: "Kuasai Keuanganmu,<br> <span class=\"highlight\">Kuasai Masa Depanmu</span>",
-        hero_subtitle: "Jangan biarkan uang mengatur hidup Anda. Mulailah perjalanan menuju kebebasan finansial dengan pemahaman dan alat yang tepat.",
-        hero_btn_learn: "Pelajari Lebih Lanjut",
-        hero_btn_features: "Lihat Fitur",
-        hero_trust: "Aplikasi keuangan dengan sistem keamanan yang dapat dipercaya.",
+        nav_testimonials: "Ulasan",
+        nav_cta: "Mulai Gratis",
+        hero_title: "Keuangan rapi,<br> <span class=\"highlight\">hidup lebih tenang</span>",
+        hero_subtitle: "Bimmo membantu profesional muda dan keluarga muda mencatat pemasukan–pengeluaran, memantau arus kas, dan menata investasi dalam satu aplikasi yang mudah dipakai—tanpa istilah ribet.",
+        hero_btn_primary: "Mulai Gratis Sekarang",
+        hero_btn_secondary: "Lihat Cara Kerjanya (2 Menit)",
+        hero_trust: "Privasi terjaga, keamanan jadi prioritas.",
+        trust_title: "Dipercaya untuk mengelola uang sehari-hari",
+        trust_subtitle: "Keamanan, privasi, dan kenyamanan jadi prioritas.",
+        trust_media_title: "Diliput oleh",
+        trust_security_title: "Keamanan",
+        trust_security_1: "Enkripsi data",
+        trust_security_2: "Proteksi akun",
+        trust_security_3: "Privasi terjaga",
+        trust_users_title: "Pengguna",
+        trust_users_value: "Dipakai oleh 10.000+ pengguna",
+        trust_users_desc: "Mulai dari langkah kecil, lebih konsisten tiap hari.",
+        trust_note: "Ganti placeholder “Media” dengan logo/sertifikasi yang Anda miliki.",
         problem_title: "Mengapa Banyak Orang Gagal?",
         problem_subtitle: "Tanpa perencanaan keuangan yang baik, risiko finansial mengintai di setiap sudut.",
         problem_1_title: "Utang Menumpuk",
@@ -185,13 +227,16 @@ const translations = {
         solution_3_title: "Analisis Keuangan",
         solution_3_desc: "Dapatkan wawasan mendalam tentang kesehatan finansial Anda.",
         features_title: "Fitur Unggulan Bimmo",
-        features_subtitle: "Alat lengkap untuk mengelola keuangan pribadi maupun bisnis.",
-        feature_budget_title: "Budgeting",
-        feature_budget_desc: "Buat dan kelola anggaran Anda dengan mudah.",
-        feature_emergency_title: "Dana Darurat",
-        feature_emergency_desc: "Bangun jaring pengaman Anda secara sistematis.",
-        feature_cashflow_title: "Arus Kas",
-        feature_cashflow_desc: "Pantau uang masuk dan keluar Anda.",
+        features_subtitle: "Manfaat yang terasa di keputusan keuangan sehari-hari.",
+        features_visual_note: "Catatan visual: produk keuangan sangat erat dengan angka—gunakan ilustrasi grafik/mockup yang bersih (bukan stock photo orang memegang HP).",
+        feature_budget_title: "Arus kas jelas",
+        feature_budget_desc: "Lihat uang masuk, uang keluar, dan sisa anggaran secara ringkas.",
+        feature_emergency_title: "Catat semudah chat",
+        feature_emergency_desc: "Tambah transaksi dalam hitungan detik, kapan pun.",
+        feature_cashflow_title: "Target lebih terarah",
+        feature_cashflow_desc: "Pantau progres dana darurat, tabungan, hingga investasi.",
+        feature_gentle_title: "Pengingat yang lembut",
+        feature_gentle_desc: "Notifikasi membantu saat pengeluaran mulai melebar—tanpa menghakimi.",
         feature_liability_title: "Kontrol Kewajiban",
         feature_liability_desc: "Kelola dan kurangi utang Anda secara efektif.",
         feature_visual_title: "Laporan Visual",
@@ -206,9 +251,20 @@ const translations = {
         feature_goals_desc: "Tetapkan, pantau, dan capai impian finansial Anda dengan perencanaan cerdas.",
         feature_migration_title: "Migrasi Data",
         feature_migration_desc: "Migrasikan data keuangan Anda dari aplikasi lama dengan mudah atau mulai perjalanan pencatatan baru Anda.",
-        cta_title: "Siap Mengambil Kendali?",
-        cta_subtitle: "Bergabunglah dengan ribuan pengguna cerdas lainnya hari ini.",
-        cta_btn: "Daftar Gratis Sekarang",
+        testimonials_title: "Cerita dari pengguna seperti Anda",
+        testimonials_subtitle: "Profesional muda dan keluarga muda yang ingin lebih rapi mengelola uang.",
+        testi_1_name: "Aditama R.",
+        testi_1_role: "Profesional muda",
+        testi_1_text: "\"Dulu tiap akhir bulan selalu bingung uang habis ke mana. Setelah pakai Bimmo, saya bisa lihat pola pengeluaran dan mulai punya sisa untuk investasi. Rasanya jauh lebih tenang.\"",
+        testi_2_name: "Sarah Kirana",
+        testi_2_role: "Keluarga muda",
+        testi_2_text: "\"Kami butuh cara simpel untuk ngatur rumah tangga tanpa spreadsheet. Bimmo bikin budgeting jadi jelas, dan kami jadi lebih kompak soal prioritas.\"",
+        testi_3_name: "Budi Santoso",
+        testi_3_role: "Pasangan baru",
+        testi_3_text: "\"Yang saya suka: tampilannya rapi, bahasanya mudah, dan pengingatnya nggak bikin stres. Sekarang nabung dana darurat terasa realistis.\"",
+        cta_title: "Siap mulai merapikan keuangan hari ini?",
+        cta_subtitle: "Mulai dari satu kebiasaan kecil: catat dan pantau arus kas Anda.",
+        cta_btn: "Daftar & Mulai Gratis",
         cta_pricing_note: "Coba Gratis Sekarang",
         footer_desc: "Partner terpercaya dalam perjalanan finansial Anda menuju masa depan yang lebih cerah.",
         footer_quick_links: "Link Cepat",
@@ -216,15 +272,7 @@ const translations = {
         footer_careers: "Karir",
         footer_blog: "Blog",
         footer_privacy: "Kebijakan Privasi",
-        footer_contact: "Hubungi Kami",
         footer_follow: "Ikuti Kami",
-        contact_title: "Hubungi Kami",
-        contact_subtitle: "Punya pertanyaan atau butuh bantuan? Tim kami siap membantu Anda.",
-        contact_email_title: "Email Kami",
-        contact_email_link: "Kirim pesan",
-        contact_phone_title: "Hubungi Kami",
-        contact_phone_link: "Bicara dengan kami",
-        contact_location_title: "Kantor Kami",
         form_name: "Nama",
         form_email: "Email",
         form_message: "Pesan",
@@ -283,7 +331,55 @@ const translations = {
     }
 };
 
-let currentLang = localStorage.getItem('bimmo_lang') || 'en';
+// Hero A/B variants (use ?hero=1..5 to force)
+const heroVariants = {
+    id: [
+        {
+            title: "Keuangan tenang,<br> <span class=\"highlight\">pikiran pun lega</span>",
+            subtitle: "Bimmo mencatat pengeluaran otomatis, memantau portofolio investasi, dan membantu Anda menyiapkan dana darurat—tanpa bikin pusing."
+        },
+        {
+            title: "Berhenti menebak-nebak<br> <span class=\"highlight\">uang Anda ke mana</span>",
+            subtitle: "Semua terlihat jelas: pengeluaran tercatat otomatis, portofolio terpantau, dana darurat terbentuk pelan tapi pasti."
+        },
+        {
+            title: "Lebih rapi,<br> <span class=\"highlight\">lebih cepat, lebih akurat</span>",
+            subtitle: "Otomatisasi pencatatan pengeluaran + pantau portofolio investasi + rencana dana darurat, dalam satu dashboard."
+        },
+        {
+            title: "Catat. Pantau.<br> <span class=\"highlight\">Siapkan.</span>",
+            subtitle: "Pengeluaran otomatis, investasi terkontrol, dana darurat kebentuk."
+        },
+        {
+            title: "Gaji numpang lewat?<br> <span class=\"highlight\">Saatnya pegang kendali</span>",
+            subtitle: "Bimmo bantu hentikan “boncos” dengan pencatatan otomatis, pantauan investasi yang jelas, dan target dana darurat yang realistis."
+        }
+    ],
+    en: [
+        {
+            title: "Calm money,<br> <span class=\"highlight\">clear mind</span>",
+            subtitle: "Bimmo auto-tracks spending, monitors your investment portfolio, and helps you build an emergency fund—without the stress."
+        },
+        {
+            title: "Stop guessing<br> <span class=\"highlight\">where your money went</span>",
+            subtitle: "Everything becomes clear: spending is tracked automatically, portfolio stays visible, and your emergency fund grows steadily."
+        },
+        {
+            title: "Cleaner.<br> <span class=\"highlight\">Faster. More accurate.</span>",
+            subtitle: "Automated expense tracking + portfolio monitoring + emergency fund plan, in one dashboard."
+        },
+        {
+            title: "Track. Monitor.<br> <span class=\"highlight\">Prepare.</span>",
+            subtitle: "Auto expenses, controlled investments, emergency fund on track."
+        },
+        {
+            title: "Paycheck disappears?<br> <span class=\"highlight\">Take control today</span>",
+            subtitle: "Bimmo helps stop overspending with automatic tracking, clear portfolio view, and realistic emergency fund targets."
+        }
+    ]
+};
+
+let currentLang = localStorage.getItem('bimmo_lang') || 'id';
 
 function updateContent() {
     const elements = document.querySelectorAll('[data-i18n]');
@@ -316,11 +412,34 @@ function updateContent() {
     }
 }
 
+function applyHeroVariant() {
+    const titleEl = document.querySelector('[data-i18n="hero_title"]');
+    const subtitleEl = document.querySelector('[data-i18n="hero_subtitle"]');
+    if (!titleEl || !subtitleEl) return;
+
+    const variants = heroVariants[currentLang] || heroVariants.id;
+    const params = new URLSearchParams(window.location.search);
+    const forced = parseInt(params.get('hero') || '', 10);
+
+    let index = Number.isFinite(forced) && forced >= 1 && forced <= variants.length
+        ? forced - 1
+        : parseInt(localStorage.getItem('bimmo_hero_variant') || '', 10) - 1;
+
+    if (!Number.isFinite(index) || index < 0 || index >= variants.length) {
+        index = Math.floor(Math.random() * variants.length);
+    }
+
+    localStorage.setItem('bimmo_hero_variant', String(index + 1));
+    titleEl.innerHTML = variants[index].title;
+    subtitleEl.textContent = variants[index].subtitle;
+}
+
 function toggleLanguage(e) {
     if (e) e.preventDefault();
     currentLang = currentLang === 'en' ? 'id' : 'en';
     localStorage.setItem('bimmo_lang', currentLang);
     updateContent();
+    applyHeroVariant();
 }
 
 document.getElementById('lang-toggle')?.addEventListener('click', toggleLanguage);
@@ -435,31 +554,6 @@ function initDevToolsDetection() {
     // setTimeout(detect, 1000);
 }
 
-// Contact Form Submission
-function initContactForm() {
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            const subject = `Bimmo Inquiry - From ${name}`;
-            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-
-            const mailtoUrl = `mailto:budgetbimmo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            window.location.href = mailtoUrl;
-
-            // Optional: Show a success message or reset form
-            // alert('Thank you! Your email client will now open to send the message.');
-            // contactForm.reset();
-        });
-    }
-}
-
 // Intersection Observer for Scroll Animations
 function initScrollAnimations() {
     const observerOptions = {
@@ -532,9 +626,12 @@ function initCheckout() {
 */
 
 console.log("Bimmo Landing v1.0.1 - DevTools detection disabled.");
+updateLayoutVars();
+window.addEventListener('resize', updateLayoutVars, { passive: true });
+window.addEventListener('orientationchange', updateLayoutVars, { passive: true });
 updateContent();
+applyHeroVariant();
 initBootstrapNavbarAutoClose();
 initDevToolsDetection();
-initContactForm();
 initScrollAnimations();
 // initCheckout();
